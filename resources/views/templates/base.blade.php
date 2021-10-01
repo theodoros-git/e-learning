@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>@yield('title', 'Accueil') - Learning App</title>
-
+		
 		@include('templates.components.css')
 		@yield('stylesheets')
 	</head>
