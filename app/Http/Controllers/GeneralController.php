@@ -12,4 +12,27 @@ class GeneralController extends Controller
 
         return view('pages.index');
     }
+
+
+    // fonction de la page de contact
+    public function contact() {
+
+        return view('pages.contact');
+    }
+
+
+
+    // fonction de traitement du formulaire de contact
+    public function contact_form(Request $request) {
+
+
+        $request->validate([
+            'nom' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'objet' => 'required|max:255',
+            'message' => 'required',
+        ]);
+
+
+    }
 }

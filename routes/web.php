@@ -18,3 +18,17 @@ use App\Http\Controllers\GeneralController;
 // Route pour la page d'accueil
 Route::get('/', [GeneralController::class, 'index'])
         ->name('index');
+
+
+// Route pour la page de contact 
+Route::get('/contact/', [GeneralController::class, 'contact'])
+        ->name('contact');
+
+
+Route::post('/contact_form', [GeneralController::class, 'contact_form'])
+        ->name('contact_form');
+
+
+// Route pour la page de Qui sommes nous
+Route::post('/qui_sommes_nous', [GeneralController::class, 'about'])
+        ->name('about');

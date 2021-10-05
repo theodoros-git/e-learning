@@ -140,15 +140,138 @@
 
     <div class="row mt-12">
 
-        <h1 class="ml-12" style="font-size: 25px; color: #1a2649; font-weight: bolder;">DERNIERS COURS SUR LA PLATEFORME</h1>
+        <h1 class="ml-12 mb-8" style="font-size: 25px; color: #1a2649; font-weight: bolder;">DERNIERS COURS SUR LA PLATEFORME</h1>
 
         <div class="col-md-1"></div>
 
-        <div class="col-md-1 mt-12">
 
-            dfddd
+        <div class="col-md-10">
+
+            <div class="row">
+                        
+                    <div class="col-md-4">
+
+
+                            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
+                          style="height: 300px;">
+                            <img src="" class="img-fluid" />
+                            <a href="">
+                              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                          </div>
+              
+                          <!-- Article data -->
+                          <div class="card">
+                            <div class="row mb-3 card-body">
+                              <div class="col-6">
+                                <a href="" class="text-info">
+                                  <i class="fas fa-align-left"></i>
+                                  
+                                </a>
+                              </div>
+                
+                              <div class="col-6 text-end">
+                                <u> </u>
+                              </div>
+                            
+                
+                            <!-- Article title and description -->
+                            
+                              <h5 style="color: #229ddc; font-size: 20px;"></h5>
+              
+                            <hr />
+                          </div>
+                            
+                        </div>
+                    </div>
+
+
+
+
+                    
+                    <div class="col-md-4">
+                
+                      <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
+                      style="height: 300px;">
+                        <img src="" class="img-fluid" />
+                        <a href="">
+                          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                      </div>
+          
+                      <!-- Article data -->
+                      <div class="card">
+                        <div class="row mb-3 card-body">
+                          <div class="col-6">
+                            <a href="" class="text-info">
+                              <i class="fas fa-align-left"></i>
+                              
+                            </a>
+                          </div>
+            
+                          <div class="col-6 text-end">
+                            <u> </u>
+                          </div>
+                        
+            
+                        <!-- Article title and description -->
+                        
+                          <h5 style="color: #229ddc; font-size: 20px;"></h5>
+          
+                        <hr />
+                      </div>
+                          
+                      
+                        
+                      </div>
+                    </div>
+
+
+                    
+                    <div class="col-md-4">
+                        
+                        <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
+                      style="height: 300px;">
+                        <img src="" class="img-fluid" />
+                        <a href="">
+                          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                      </div>
+          
+                      <!-- Article data -->
+                      <div class="card">
+                        <div class="row mb-3 card-body">
+                          <div class="col-6">
+                            <a href="" class="text-info">
+                              <i class="fas fa-align-left"></i>
+                              
+                            </a>
+                          </div>
+            
+                          <div class="col-6 text-end">
+                            <u> </u>
+                          </div>
+                        
+            
+                        <!-- Article title and description -->
+                        
+                          <h5 style="color: #229ddc; font-size: 20px;"></h5>
+          
+                        <hr />
+                      </div>
+
+                    </div>
+
+                    </div>
+            
+                    
+            </div>
 
         </div>
+
+
+        <div class="text-center mt-12" ><a href="" class="btn btn-primary btn-rounded mb-4" style="background-color: #229ddc;">
+        Plus de cours</a></div>
 
     </div>
     

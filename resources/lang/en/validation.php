@@ -13,12 +13,18 @@ return [
     |
     */
 
-    'accepted' => 'The :attribute must be accepted.',
-    'accepted_if' => 'The :attribute must be accepted when :other is :value.',
-    'active_url' => 'The :attribute is not a valid URL.',
-    'after' => 'The :attribute must be a date after :date.',
+    'accepted' => 'Le champ :attribute doit être accepté.',
+
+    'accepted_if' => 'Le champ :attribute doit être accepté lorsque :other vaut :value.',
+
+    'active_url' => 'Le champ :attribute n\'est pas une URL valide.',
+
+    'after' => 'Le champ :attribute doit être une date postérieure au :date.',
+
     'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
-    'alpha' => 'The :attribute must only contain letters.',
+
+    'alpha' => 'Le champ :attribute doit seulement contenir des lettres.',
+
     'alpha_dash' => 'The :attribute must only contain letters, numbers, dashes and underscores.',
     'alpha_num' => 'The :attribute must only contain letters and numbers.',
     'array' => 'The :attribute must be an array.',
@@ -41,7 +47,9 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+
+    'email' => 'Le format du champ :attribute est invalide.',
+
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'exists' => 'The selected :attribute is invalid.',
     'file' => 'The :attribute must be a file.',
@@ -78,12 +86,13 @@ return [
         'string' => 'The :attribute must be less than or equal :value characters.',
         'array' => 'The :attribute must not have more than :value items.',
     ],
-    'max' => [
-        'numeric' => 'The :attribute must not be greater than :max.',
-        'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'string' => 'The :attribute must not be greater than :max characters.',
-        'array' => 'The :attribute must not have more than :max items.',
-    ],
+    
+    "max"              => array(
+        "numeric" => "La valeur de :attribute ne peut être supérieure à :max.",
+        "file"    => "Le fichier :attribute ne peut être plus gros que :max kilobytes.",
+        "string"  => "Le texte de :attribute ne peut contenir plus de :max caractères.",
+    ),
+
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
@@ -99,7 +108,9 @@ return [
     'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+
+    'required' => 'Le champ :attribute est obligatoire.',
+
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',

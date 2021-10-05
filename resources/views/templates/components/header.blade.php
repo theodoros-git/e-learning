@@ -102,7 +102,7 @@
               <a class="nav-link " href=""  id="nav_menu">Qui sommes-nous?</a>
             </li>
             <li class="nav-item" style="margin-right: 15px;">
-              <a class="nav-link " href=""  id="nav_menu">Contact</a>
+              <a class="nav-link " href="{{ route('contact') }}"  id="nav_menu">Contact</a>
             </li>
             &nbsp;
             
