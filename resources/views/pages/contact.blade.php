@@ -7,7 +7,20 @@
 
 @section('stylesheets')
 
+    <style>
     
+        @media only screen and (max-width: 800px) {
+            #nos {
+                display: none;
+            }
+        }
+
+        span{
+            color: #229ddc;
+        }
+
+
+    </style>
 
 @stop
 
@@ -19,17 +32,17 @@
 
 <div class="container mt-36" >
 
-    <nav aria-label="breadcrumb" style="margin-left: 40px;">
+    <nav aria-label="breadcrumb" style="margin-left: 40px;" id="nos">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('index') }}" style="font-size: 13px;">Accueil</a></li>
-          <li class="breadcrumb-item active" id="nos"> <span style="font-size: 13px; color: #229ddc;">Contactez-nous</span></li>
+          <li class="breadcrumb-item active"> <span style="font-size: 13px; color: #229ddc;">Contactez-nous</span></li>
         </ol>
     </nav>
     
 
 </div>
 
-<div class="container mt-20" >
+<div class="container mt-16" >
     <div class="row">
 
         <div class="col-md-1"></div>
@@ -53,7 +66,7 @@
 
             
 
-            <div class="col-md-5" style="margin-left: px;">
+            <div class="col-md-6" style="margin-left: px;">
                 <div class="card ">
 
                     <div class="card-header mt-4" style="font-weight: bolder; padding-bottom: 13px; padding-top:; font-size: 20px; color: #1a2649;">

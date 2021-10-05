@@ -21,6 +21,20 @@ class GeneralController extends Controller
     }
 
 
+    // fonction de la page de about
+    public function about() {
+
+        return view('pages.about');
+    }
+
+
+    // fonction de la page de about
+    public function signup() {
+
+        return view('inscription.index');
+    }
+
+
 
     // fonction de traitement du formulaire de contact
     public function contact_form(Request $request) {

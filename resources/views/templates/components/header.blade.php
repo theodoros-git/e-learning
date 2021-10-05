@@ -99,7 +99,7 @@
             
 
             <li class="nav-item" style="margin-right: 15px;">
-              <a class="nav-link " href=""  id="nav_menu">Qui sommes-nous?</a>
+              <a class="nav-link " href="{{ route('about') }}"  id="nav_menu">Qui sommes-nous?</a>
             </li>
             <li class="nav-item" style="margin-right: 15px;">
               <a class="nav-link " href="{{ route('contact') }}"  id="nav_menu">Contact</a>
@@ -123,7 +123,7 @@
             <li class="nav-item" >
               <a
                   class="btn btn-info btn-rounded "
-                  href=""
+                  href="{{ route('signup') }}"
                   role="button"
                   style="  color: white;
                    background-color: #1a2649;

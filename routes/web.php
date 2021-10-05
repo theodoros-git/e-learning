@@ -30,5 +30,11 @@ Route::post('/contact_form', [GeneralController::class, 'contact_form'])
 
 
 // Route pour la page de Qui sommes nous
-Route::post('/qui_sommes_nous', [GeneralController::class, 'about'])
+Route::get('/qui_sommes_nous', [GeneralController::class, 'about'])
         ->name('about');
+
+
+
+// Route pour la page d'inscription
+Route::get('/inscription', [GeneralController::class, 'signup'])
+        ->name('signup');
