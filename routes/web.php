@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,42 @@ Route::get('/qui_sommes_nous', [GeneralController::class, 'about'])
 // Route pour la page d'inscription
 Route::get('/inscription', [GeneralController::class, 'signup'])
         ->name('signup');
+
+
+
+// Route pour la page de connection
+Route::get('/connection', [GeneralController::class, 'signin'])
+        ->name('signin');
+
+
+
+// Groupe de route pour les professeurs
+Route::prefix('teachers')->group(function () {
+
+    // route pour l'inscription des professeurs
+    Route::get('/sign_up', [TeacherController::class, 'sign_up'])
+        ->name('sign_up');
+
+    // route pour la connection
+    Route::get('/sign_in', [TeacherController::class, 'sign_in'])
+        ->name('sign_in');
+        
+
+});
+
+
+
+
+// Groupe de route pour les students
+Route::prefix('students')->group(function () {
+
+    // route pour l'inscription des élèves
+    Route::get('/log_up', [StudentController::class, 'logup'])
+        ->name('logup');
+
+    // route pour la connection des élèves
+    Route::get('/login', [StudentController::class, 'login'])
+        ->name('login');
+        
+
+});

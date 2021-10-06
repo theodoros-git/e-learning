@@ -28,10 +28,18 @@ class GeneralController extends Controller
     }
 
 
-    // fonction de la page de about
+    // fonction de la page d'inscription général
     public function signup() {
 
         return view('inscription.index');
+    }
+
+
+
+    // fonction de la page de connection général
+    public function signin() {
+
+        return view('connection.index');
     }
 
 

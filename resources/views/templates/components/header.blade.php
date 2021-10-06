@@ -60,7 +60,7 @@
 	<nav class="navbar navbar-expand-lg  fixed-top navbar-light bg-light " style="margin-top: 15px;">
       <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand nav-link"  href="" style="margin-left: 10px;">
+        <a class="navbar-brand nav-link"  href="{{ route('index') }}" style="margin-left: 10px;">
           <img
                     src=""
                     style="height: 70px; width: 100px; margin-left: 10px;"
@@ -109,7 +109,7 @@
             <li class="nav-item" >
               <a
                   class="btn btn-outline-info btn-rounded"
-                  href=""
+                  href="{{ route('signin') }}"
                   role="button"
                   style="  color: #1a2649;
                    background-color: white;
