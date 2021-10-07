@@ -44,10 +44,59 @@
                 Je me connecte à mon compte Learning-App</div>
 
                 <div class="card-body">
-                    
-                    
 
+
+                    <div class="text-center"> <i class="fas fa-user-astronaut fa-3x my-5 "></i></div>
                     
+                    <form action="" method="POST" 
+                    class="text-center border border-light " >
+                        @csrf
+                    
+                        <div class="row mb-4">
+
+                                    <div class="col" style="text-align: left;">
+                                        
+                                        <label class="form-label" for="username">Entrez votre nom d'utilisateur</label>
+
+                                        <div style="margin-bottom: 10px;"></div>
+
+                                        <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" />
+
+                                        @error('username')
+
+                                            <div class="alert alert-danger">{{ $message }}</div>
+
+                                        @enderror
+                                        
+                                    </div>
+      
+                        </div>
+
+                        <div class="row mb-4">
+
+                                <div class="col" style="text-align: left;">
+                                    
+                                    <label class="form-label" for="password">Entrez votre mot de passe</label>
+
+                                    <div style="margin-bottom: 10px;"></div>
+
+                                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" />
+
+                                    @error('password')
+
+                                        <div class="alert alert-danger">{{ $message }}</div>
+
+                                    @enderror
+                                    
+                                </div>
+      
+                        </div>
+
+                        <button class="btn btn-info my-4 "  
+                            type="submit">Se connecter</button>
+
+                    </form>
+                        
                 </div>
 
                 <div class="card-footer text-muted text-center">
