@@ -42,7 +42,7 @@
 
     <div class="row">
 
-        <div class="col-md-1">
+        <div class="col-md-2">
             
         </div>
         <div class="col-md-7">
@@ -73,7 +73,7 @@
                       </tbody>
                     </table>
 
-                    <table class="table">
+                    <table class="table mt-10">
                       <thead>
                         <tr>
                           <th scope="col"><strong>Nom d'utilisateur</strong></th>
@@ -98,24 +98,6 @@
 
                 <div class="card-footer text-muted text-center">
 
-                    
-               
-                </div>
-
-            </div>
-        </div>
-
-
-
-        <div class="col-md-3">
-
-            <div class="card ">
-
-                <div class="card-header text-center" style="font-weight: bolder; font-size: 20px; color: #1a2649;">
-                Je confirme mon inscription à Learning-App</div>
-
-                <div class="card-body">
-                    
                     <div class="text-center"> <button onclick="addToast()" class="btn btn-info my-4">Confirmez votre inscription</button></div>
                     <script>
                         function addToast(){
@@ -134,21 +116,15 @@
                             });
                         }
                     </script>
-                    
-
-                    
-                </div>
-
-                <div class="card-footer text-muted text-center">
-
-                    <p style="color: #1a2649;">Si vous êtes déjà inscrit,  
-                        <a href="{{ route('signin') }}" style="color: #229ddc;"
-                         class="me-4 ">Cliquez ici</a></p>
                
                 </div>
 
             </div>
+        </div>
 
+
+
+        
         </div>
 
         <div class="col-md-4"></div>
