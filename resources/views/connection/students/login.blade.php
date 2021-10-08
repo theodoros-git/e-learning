@@ -46,7 +46,11 @@
                 <div class="card-body">
 
                      
-                    <p class="card-text text-danger text-center mb-4 mt-2"><strong>{{ $message ?? '' }}</strong></p>
+                    <p class="card-text text-danger text-center mb-4 mt-2"><strong>
+                        
+                           {{ $message ?? '' }} 
+                        
+                    </strong></p>
                     
                     
                     
