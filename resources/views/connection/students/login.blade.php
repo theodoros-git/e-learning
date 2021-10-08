@@ -45,7 +45,10 @@
 
                 <div class="card-body">
 
-
+                     
+                    <p class="card-text text-danger text-center mb-4 mt-2"><strong>{{ $message ?? '' }}</strong></p>
+                    
+                    
                     
                     <form action="{{ route('login_form') }}" method="POST" 
                     class="text-center border border-light " >

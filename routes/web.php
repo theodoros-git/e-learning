@@ -93,6 +93,12 @@ Route::prefix('students')->group(function () {
 
     Route::post('/login_form', [StudentController::class, 'login_form'])
         ->name('login_form');
+
+
+    // route pour dashboard eleves
+    Route::get('/dashboard', [StudentController::class, 'dashboard'])
+        ->name('dashboard_students')
+        ->middleware('auth');
         
 
 });

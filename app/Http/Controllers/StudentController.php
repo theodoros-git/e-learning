@@ -127,8 +127,25 @@ class StudentController extends Controller
 
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'is_student' => 1], $remember = $request->remember)) {
 
-            return redirect('connection')
-                        ->withSuccess('Signed in');
+            return redirect('/students/login');
+                        
         }
+
+        else {
+
+            return back()->withErrors([
+                'message' => 'Identifiants incorrects. Veuillez réessayer',
+            ]);
+        }
+    }
+
+
+    public function dashboard() {
+
+        if (Auth::check()) {
+            
+        }
+
+        return redirect('/students/login');
     }
 }
