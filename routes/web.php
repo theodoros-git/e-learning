@@ -77,9 +77,22 @@ Route::prefix('students')->group(function () {
     Route::post('/log_up_form', [StudentController::class, 'logup_form'])
         ->name('logup_form');
 
+    
+
+
+    // route pour l'inscription des élèves post confirmation
+    Route::get('/log_up_confirmation_one', [StudentController::class, 'logup_form_confirmation_one'])
+        ->name('logup_form_confirmation_one');
+
+    Route::post('/log_up_confirmation', [StudentController::class, 'logup_confirmation'])
+        ->name('logup_confirmation');
+
     // route pour la connection des élèves
     Route::get('/login', [StudentController::class, 'login'])
         ->name('login');
+
+    Route::post('/login_form', [StudentController::class, 'login_form'])
+        ->name('login_form');
         
 
 });

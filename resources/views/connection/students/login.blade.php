@@ -46,9 +46,8 @@
                 <div class="card-body">
 
 
-                    <div class="text-center"> <i class="fas fa-user-astronaut fa-3x my-5 "></i></div>
                     
-                    <form action="" method="POST" 
+                    <form action="{{ route('login_form') }}" method="POST" 
                     class="text-center border border-light " >
                         @csrf
                     
@@ -90,6 +89,20 @@
                                     
                                 </div>
       
+                        </div>
+
+                        <div class="form-check d-flex justify-content-center mb-4">
+                            <input
+                              class="form-check-input me-2"
+                              type="checkbox"
+                              
+                              id="remember"
+                              name="remember"
+                              checked
+                            />
+                            <label class="form-check-label" for="remember">
+                              Se souvenir de moi
+                            </label>
                         </div>
 
                         <button class="btn btn-info my-4 "  
