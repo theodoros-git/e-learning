@@ -145,6 +145,100 @@ class StudentController extends Controller
     public function dashboard() {
 
         if (Auth::check()) {
+
+
+            return view('dashboard.students.dashboard');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_courses() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.courses');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_tds() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.tds');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_challenges() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.challenges');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_profil() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.profil');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_factures() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.factures');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_change_informations() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.change_informations');
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function students_change_password() {
+
+        if (Auth::check()) {
+
+
+            return view('dashboard.students.change_password');
             
         }
 

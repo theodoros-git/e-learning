@@ -99,6 +99,45 @@ Route::prefix('students')->group(function () {
     Route::get('/dashboard', [StudentController::class, 'dashboard'])
         ->name('dashboard_students')
         ->middleware('auth');
+
+
+    // route pour dashboard eleves
+    Route::get('/courses', [StudentController::class, 'students_courses'])
+        ->name('students_courses')
+        ->middleware('auth');
+
+
+    // route pour dashboard eleves
+    Route::get('/my_tds', [StudentController::class, 'students_tds'])
+        ->name('students_tds')
+        ->middleware('auth');
+
+    // route pour dashboard eleves
+    Route::get('/my_challenges', [StudentController::class, 'students_challenges'])
+        ->name('students_challenges')
+        ->middleware('auth');
+
+
+    // route pour dashboard eleves
+    Route::get('/profil', [StudentController::class, 'students_profil'])
+        ->name('students_profil')
+        ->middleware('auth');
+
+    // route pour dashboard eleves
+    Route::get('/factures', [StudentController::class, 'students_factures'])
+        ->name('students_factures')
+        ->middleware('auth');
+
+    // route pour dashboard eleves
+    Route::get('/change_my_informations', [StudentController::class, 'students_change_informations'])
+        ->name('students_change_informations')
+        ->middleware('auth');
+
+
+    // route pour dashboard eleves
+    Route::get('/change_my_password', [StudentController::class, 'students_change_password'])
+        ->name('students_change_password')
+        ->middleware('auth');
         
 
 });

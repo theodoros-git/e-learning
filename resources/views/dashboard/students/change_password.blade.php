@@ -1,7 +1,5 @@
 @extends('templates.dashboard.students.layout')
 
-
-
 @section('title')
-	Welcome
+	Changer mon mot de passe
 @stop

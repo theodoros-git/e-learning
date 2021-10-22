@@ -112,23 +112,7 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="/css/toast.script.js"></script>
-    <script>
-                        function addToast(){
-                            $.Toast("Inscription", "Inscription validée. Je vous remercie", "success", {
-                                appendTo:"body",
-                                has_icon:true,
-                                has_close_btn:true,
-                                stack: true,
-                                fullscreen:false,
-                                timeout:5000,
-                                sticky:false,
-                                has_progress:true,
-                                rtl:false,
-                                position_class:"toast-top-right",
-
-                            });
-                        }
-                    </script>
+    
 	</body>
 
 </html>

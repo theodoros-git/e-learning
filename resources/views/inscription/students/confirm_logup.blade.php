@@ -65,9 +65,9 @@
                       <tbody>
                         
                         <tr class="table-success">
-                          <th scope="row">{{ $nom }}</th>
-                          <td>{{ $ecole }}</td>
-                          <td>{{ $niveau }}</td>
+                          <th scope="row">{{ $nom ?? ''}}</th>
+                          <td>{{ $ecole ?? '' }}</td>
+                          <td>{{ $niveau ?? '' }}</td>
                         </tr>
                         
                       </tbody>
@@ -84,9 +84,9 @@
                       <tbody>
                         
                         <tr class="table-success">
-                          <th scope="row">{{ $username }}</th>
-                          <td>{{ $sexe }}</td>
-                          <td>{{ $email_tel }}</td>
+                          <th scope="row">{{ $username ?? '' }}</th>
+                          <td>{{ $sexe ?? '' }}</td>
+                          <td>{{ $email_tel ?? '' }}</td>
                         </tr>
                         
                       </tbody>
@@ -100,7 +100,7 @@
                     <form action="{{ route('logup_confirmation') }}" method="POST">
 
                         @csrf
-                        <div class="text-center"> <button onclick="addToast()" class="btn btn-info my-4" type="submit">Confirmez votre inscription</button></div>
+                        <div class="text-center"> <button onclick="addToast()" class="btn btn-info my-4" type="submit">Je confirme</button></div>
                     </form>
 
 
@@ -139,3 +139,5 @@
 </div>
 
 @stop
+
+
