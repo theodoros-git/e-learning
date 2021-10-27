@@ -14,7 +14,7 @@ class CreateChallengesTable extends Migration
     public function up()
     {
         Schema::create('challenges', function (Blueprint $table) {
-            $table->string('challeng_id');
+            $table->id();
             $table->string('designation');
             $table->string('created_by');
             $table->timestamps();

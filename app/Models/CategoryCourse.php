@@ -4,16 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
 
 class CategoryCourse extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'categorie_id';
+    
 
-    public $incrementing = false;
 
-    protected $keyType = 'string';
+    protected $fillable = [
+        'categorie_id',
+        'designation',
+        'created_by',
+    ];
 
     public function courses()
     {

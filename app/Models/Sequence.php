@@ -4,16 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Sa;
+use App\Models\Activite;
 
 class Sequence extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'seq_id';
+    
 
-    public $incrementing = false;
-
-    protected $keyType = 'string';
+    protected $fillable = [
+        'seq_id', 
+        'designation',
+        'sa_id',
+        'created_by',
+    ];
 
     public function sa()
     {

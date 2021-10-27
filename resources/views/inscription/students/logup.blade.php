@@ -121,8 +121,10 @@
                                     <select class="select @error('niveau') is-invalid @enderror" id="niveau" name="niveau">
 
                                       <option value="">--Veuillez choisir votre niveau--</option>
-                                      <option value="troisieme">3ème</option>
-                                      <option value="terminales">Terminales</option>
+                                      <option value="Terminales A">Terminales A</option>
+                                      <option value="Terminales B">Terminales B</option>
+                                      <option value="Terminales C">Terminales C</option>
+                                      <option value="Terminales D">Terminales D</option>
                                       
                                     </select>
 

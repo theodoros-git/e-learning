@@ -4,16 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Sequence;
+use App\Models\Course;
 
 class Sa extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'situation_id';
+    
 
-    public $incrementing = false;
 
-    protected $keyType = 'string';
+    protected $fillable = [
+        'situation_id',
+        'designation',
+        'course_id',
+        'created_by',
+    ];
 
     public function course()
     {

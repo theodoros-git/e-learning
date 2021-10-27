@@ -14,12 +14,12 @@ class CreateSasTable extends Migration
     public function up()
     {
         Schema::create('sas', function (Blueprint $table) {
-            $table->string('situation_id');
+            $table->id();
             $table->string('designation');
-            $table->foreign('course_id')->references('cours_id')->on('courses')->onUpdate('cascade')
-            ->onDelete('cascade');
+            
+            
             $table->string('created_by');
-            $table->timestamps();
+            $table->timestamps() ;
         });
     }
 

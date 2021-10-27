@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Td extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+
+
+
+    protected $fillable = [
+        'td_id', 
+        'designation',
+        'created_by',
+    ];
 }

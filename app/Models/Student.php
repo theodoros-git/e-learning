@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
 
 class Student extends Model
 {
@@ -19,6 +20,7 @@ class Student extends Model
         'email',
         'level',
         'phone',
+        'abonnement_is_active',
     ];
 
 

@@ -14,10 +14,10 @@ class CreateSequencesTable extends Migration
     public function up()
     {
         Schema::create('sequences', function (Blueprint $table) {
-            $table->string('seq_id');
+            $table->id();
             $table->string('designation');
-            $table->foreign('sa_id')->references('situation_id')->on('sas')->onUpdate('cascade')
-            ->onDelete('cascade');
+            
+            
             $table->string('created_by');
             $table->timestamps();
         });

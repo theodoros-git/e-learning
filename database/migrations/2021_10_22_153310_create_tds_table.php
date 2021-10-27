@@ -14,7 +14,7 @@ class CreateTdsTable extends Migration
     public function up()
     {
         Schema::create('tds', function (Blueprint $table) {
-            $table->string('td_id');
+            $table->id();
             $table->string('designation');
             $table->string('created_by');
             $table->timestamps();

@@ -2,7 +2,7 @@
 
 
 @section('title')
-  Connection - Élèves
+  Admin
 @stop
 
 @section('stylesheets')
@@ -41,7 +41,7 @@
             <div class="card ">
 
                 <div class="card-header text-center" style="font-weight: bolder; font-size: 20px; color: #1a2649;">
-                Je me connecte à mon compte Learning-App</div>
+                Administration - LearningApp</div>
 
                 <div class="card-body">
 
@@ -51,16 +51,10 @@
                            {{ $message ?? '' }} 
                         
                     </strong></p>
-
-                    @if(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
                     
                     
                     
-                    <form action="{{ route('login_form') }}" method="POST" 
+                    <form action="{{ route('admin_signup_form') }}" method="POST" 
                     class="text-center border border-light " >
                         @csrf
                     
@@ -68,7 +62,7 @@
 
                                     <div class="col" style="text-align: left;">
                                         
-                                        <label class="form-label" for="username">Entrez votre nom d'utilisateur</label>
+                                        <label class="form-label" for="username">Nom d'utilisateur Admin</label>
 
                                         <div style="margin-bottom: 10px;"></div>
 
@@ -88,13 +82,13 @@
 
                                 <div class="col" style="text-align: left;">
                                     
-                                    <label class="form-label" for="password">Entrez votre mot de passe</label>
+                                    <label class="form-label" for="password_admin">Mot de passe</label>
 
                                     <div style="margin-bottom: 10px;"></div>
 
-                                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" />
+                                    <input type="password" id="password_admin" name="password_admin" class="form-control @error('password_admin') is-invalid @enderror" value="{{ old('password_admin') }}" />
 
-                                    @error('password')
+                                    @error('password_admin')
 
                                         <div class="alert alert-danger">{{ $message }}</div>
 
@@ -104,31 +98,36 @@
       
                         </div>
 
-                        <div class="form-check d-flex justify-content-center mb-4">
-                            <input
-                              class="form-check-input me-2"
-                              type="checkbox"
-                              
-                              id="remember"
-                              name="remember"
-                              checked
-                            />
-                            <label class="form-check-label" for="remember">
-                              Se souvenir de moi
-                            </label>
+                        <div class="row mb-4">
+
+                                <div class="col" style="text-align: left;">
+                                    
+                                    <label class="form-label" for="password_confirmation">Confirmez le mot de passe</label>
+
+                                    <div style="margin-bottom: 10px;"></div>
+
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" />
+
+                                    @error('password_confirmation')
+
+                                        <div class="alert alert-danger">{{ $message }}</div>
+
+                                    @enderror
+                                    
+                                </div>
+      
                         </div>
 
+
                         <button class="btn btn-info my-4 "  
-                            type="submit">Se connecter</button>
+                            type="submit">Valider</button>
 
                     </form>
                         
                 </div>
 
                 <div class="card-footer text-muted text-center">
-                    <p style="color: #1a2649;">Si vous n'êtes pas encore inscrit,  
-                        <a href="{{ route('signup') }}" style="color: #229ddc;"
-                         class="me-4 ">Cliquez ici</a></p>
+                    <p style="color: #1a2649;">Admin - Inscription</p>
                     
                
                 </div>

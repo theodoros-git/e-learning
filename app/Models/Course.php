@@ -4,18 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Student;
+use App\Models\Sa;
+use App\Models\CategoryCourse;
 
 class Course extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'cours_id';
+    
 
-    public $incrementing = false;
 
-    protected $keyType = 'string';
+    protected $fillable = [
+        'cours_id',
+        'designation',
+        'category_course_id',
+        'created_by',
+    ];
 
-    public function categorycourse() {
+    public function category_course() {
     
         return $this->belongsTo(CategoryCourse::class, 'foreign_key');
     }

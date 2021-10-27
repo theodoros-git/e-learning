@@ -93,6 +93,7 @@ class StudentController extends Controller
         $student->password = $password;
         $student->email = $email_tel;
         $student->phone = $email_tel;
+        $student->abonnement_is_active = false;
         $student->save();
 
         $user = new User;
@@ -101,11 +102,13 @@ class StudentController extends Controller
         $user->password = Hash::make($password);
         $user->is_student = True;
         $user->is_teacher = False;
+        $user->is_admin = False;
+
 
         $user->save();
 
 
-        return redirect('/students/login')->withSuccess('Votre inscription est validée avec succès. Veuillez donc vous connecter. Merci');;
+        return redirect('/students/login')->withSuccess('Votre inscription est validée avec succès. Veuillez donc vous connecter. Merci');
 
     }
 

@@ -23,6 +23,7 @@ class CreateStudentsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('username')->unique();
             $table->string('password');
+            $table->boolean('abonnement_is_active');
             $table->timestamps();
         });
     }

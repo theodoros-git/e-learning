@@ -2,7 +2,7 @@
 
 
 @section('title')
-  Connection - Élèves
+  Connection - Admin
 @stop
 
 @section('stylesheets')
@@ -41,7 +41,7 @@
             <div class="card ">
 
                 <div class="card-header text-center" style="font-weight: bolder; font-size: 20px; color: #1a2649;">
-                Je me connecte à mon compte Learning-App</div>
+                Admin Learning-App</div>
 
                 <div class="card-body">
 
@@ -60,7 +60,7 @@
                     
                     
                     
-                    <form action="{{ route('login_form') }}" method="POST" 
+                    <form action="{{ route('admin_login_form') }}" method="POST" 
                     class="text-center border border-light " >
                         @csrf
                     
@@ -126,9 +126,7 @@
                 </div>
 
                 <div class="card-footer text-muted text-center">
-                    <p style="color: #1a2649;">Si vous n'êtes pas encore inscrit,  
-                        <a href="{{ route('signup') }}" style="color: #229ddc;"
-                         class="me-4 ">Cliquez ici</a></p>
+                    <p style="color: #1a2649;">Admin - Connection</p>
                     
                
                 </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivitesTable extends Migration
+class AddActiviteIdToActiviteFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateActivitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activites', function (Blueprint $table) {
-            $table->id();
-            $table->string('designation');
-            $table->string('url');
+        Schema::table('activite_files', function (Blueprint $table) {
+            $table->foreignId('activite_id')->constrained('activites')->onUpdate('cascade')
+            ->onDelete('cascade');
             
-            
-            $table->string('created_by');
-            $table->timestamps();
         });
     }
 
@@ -31,6 +27,8 @@ class CreateActivitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activites');
+        Schema::table('activite_files', function (Blueprint $table) {
+            //
+        });
     }
 }

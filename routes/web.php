@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +138,45 @@ Route::prefix('students')->group(function () {
     // route pour dashboard eleves
     Route::get('/change_my_password', [StudentController::class, 'students_change_password'])
         ->name('students_change_password')
+        ->middleware('auth');
+        
+
+});
+
+
+
+// Groupe de route pour les admins
+Route::prefix('admin')->group(function () {
+
+    // route pour l'inscription des professeurs
+    Route::get('/signup', [AdminController::class, 'signup'])
+        ->name('admin_signup');
+
+    // route pour la connection
+    Route::post('/signup', [AdminController::class, 'signup_form'])
+        ->name('admin_signup_form');
+
+    // route pour la connection
+    Route::get('/signup_confirmation', [AdminController::class, 'signup_confirmation'])
+        ->name('admin_signup_confirmation');
+
+
+    // route pour la connection
+    Route::post('/signup_confirmation', [AdminController::class, 'signup_confirmation_form'])
+        ->name('admin_signup_confirmation_form');
+
+
+    // route pour la connection
+    Route::get('/login', [AdminController::class, 'login'])
+        ->name('admin_login');
+
+    // route pour la connection
+    Route::post('/login', [AdminController::class, 'login_form'])
+        ->name('admin_login_form');
+
+    // route pour la connection
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin_dashboard')
         ->middleware('auth');
         
 
