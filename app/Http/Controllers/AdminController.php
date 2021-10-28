@@ -7,6 +7,8 @@ use App\Models\User;
 use Hash;
 use Session;
 
+use App\Models\CategoryCourse;
+
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -119,9 +121,117 @@ class AdminController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_admin == True) {
+
 
             return view('dashboard.admin.dashboard');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
             
         }
+
+        return redirect('/admin/login');
+    }
+
+    public function category_add() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+
+            return view('dashboard.admin.category_add');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function category_add_form(Request $request) {
+
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_admin == True) {
+            
+                $request->validate([
+                'category_course' => 'required|max:255',
+                ]);
+
+
+                $category_add = new CategoryCourse;
+
+                $category_add->designation = $request->category_course;
+                $category_add->created_by = Auth()->user()->username;
+
+                $category_add->save();
+
+
+                return redirect('/admin/dashboard')->withCategoryaddsuccess('Catégorie de cours créée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+            
+        }
+
+
+        return redirect('/admin/login');
+    }
+
+    public function category_modify() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $categories = CategoryCourse::all();
+
+
+                return view('dashboard.admin.category_modify');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function autorisation() {
+
+        return view('errors.unautorised');
+    }
+
+
+
+
+    public function logout(Request $request) {
+    
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

@@ -18,6 +18,13 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+
+
+// Route pour la page d'accueil
+Route::get('/unauthorized_user', [AdminController::class, 'autorisation'])
+        ->name('unauthorized');
+
+
 // Route pour la page d'accueil
 Route::get('/', [GeneralController::class, 'index'])
         ->name('index');
@@ -178,6 +185,26 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])
         ->name('admin_dashboard')
         ->middleware('auth');
+
+
+    // route pour la connection
+    Route::get('/ajouter_une_catégorie_de_cours', [AdminController::class, 'category_add'])
+        ->name('admin_category_add')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::post('/ajouter_une_catégorie_de_cours', [AdminController::class, 'category_add_form'])
+        ->name('admin_category_add_form')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::get('/modifier_une_catégorie_de_cours', [AdminController::class, 'category_modify'])
+        ->name('admin_category_modify')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::get('/logout', [AdminController::class, 'logout'])
+        ->name('admin_logout');
         
 
 });

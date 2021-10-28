@@ -15,6 +15,8 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -38,11 +40,6 @@
                         
                 </li>
 
-                <li class="">
-                    
-                    <a href="{{ route('students_courses') }}">Ajouter une Catégorie de Cours</a>
-                        
-                </li>
 
                 <li class="">
                     
@@ -55,7 +52,21 @@
                     <a href="{{ route('students_challenges') }}">Lancer un Challenge</a>
                         
                 </li>
+
+                <li>
+                    <a href="#catSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Catégorie de cours</a>
+                    <ul class="collapse list-unstyled" id="catSubmenu">
+                        <li>
+                            <a href="{{ route('admin_category_add') }}">Ajouter une Catégorie de cours</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('students_factures') }}">Modifier une Catégorie de cours</a>
+                        </li>
+                        
+                    </ul>
+                </li>
                 
+
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tous les Cours</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -103,12 +114,12 @@
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item ">
                                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-                                > &nbsp;  </a>
+                                > {{ auth()->user()->username }} | Admin &nbsp;&nbsp;&nbsp;  </a>
                                     
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="">Se déconnecter</a>
+                                <a class="nav-link" href="{{ route('admin_logout') }}">Se déconnecter</a>
                             </li>
                         </ul>
                     </div>

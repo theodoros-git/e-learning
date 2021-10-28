@@ -149,8 +149,16 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.dashboard');
+
+                return view('dashboard.students.dashboard');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 
@@ -162,8 +170,14 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.courses');
+                return view('dashboard.students.courses');
+
+            }
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 
@@ -175,8 +189,13 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.tds');
+                return view('dashboard.students.tds');
+            }
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 
@@ -188,8 +207,14 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.challenges');
+                return view('dashboard.students.challenges');
+
+            }
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 
@@ -201,9 +226,13 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.profil');
-            
+                return view('dashboard.students.profil');
+            }
+            else {
+                return view('errors.unautorised');
+            }
         }
 
         return redirect('/students/login');
@@ -214,8 +243,13 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.factures');
+                return view('dashboard.students.factures');
+            }
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 
@@ -227,8 +261,13 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.change_informations');
+                return view('dashboard.students.change_informations');
+            }
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 
@@ -240,8 +279,13 @@ class StudentController extends Controller
 
         if (Auth::check()) {
 
+            if (Auth()->user()->is_student == True) {
 
-            return view('dashboard.students.change_password');
+                return view('dashboard.students.change_password');
+            }
+            else {
+                return view('errors.unautorised');
+            }
             
         }
 

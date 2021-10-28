@@ -97,7 +97,7 @@
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item ">
                                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-                                > &nbsp;  </a>
+                                > {{ auth()->user()->username }} | Student &nbsp;  </a>
                                     
                             </li>
                             
