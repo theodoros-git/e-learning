@@ -31,33 +31,39 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p style="font-weight: bold;">Tableau de bord</p>
+                <p style="font-weight: bold;">Tableau de bord - Admin</p>
                 <li class="">
                     
-                    <a href="{{ route('students_courses') }}">Mes Cours</a>
+                    <a href="{{ route('students_courses') }}">Ajouter un Cours</a>
                         
                 </li>
 
                 <li class="">
                     
-                    <a href="{{ route('students_tds') }}">Mes TDs</a>
+                    <a href="{{ route('students_courses') }}">Ajouter une Catégorie de Cours</a>
                         
                 </li>
 
                 <li class="">
                     
-                    <a href="{{ route('students_challenges') }}">Mes Challenges</a>
+                    <a href="{{ route('students_tds') }}">Programmer un TD</a>
+                        
+                </li>
+
+                <li class="">
+                    
+                    <a href="{{ route('students_challenges') }}">Lancer un Challenge</a>
                         
                 </li>
                 
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mon compte</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tous les Cours</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="{{ route('students_profil') }}">Profil</a>
+                            <a href="{{ route('students_profil') }}">Mathématiques</a>
                         </li>
                         <li>
-                            <a href="{{ route('students_factures') }}">Mes Factures</a>
+                            <a href="{{ route('students_factures') }}">Philosophie</a>
                         </li>
                         
                     </ul>
