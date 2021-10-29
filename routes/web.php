@@ -210,6 +210,17 @@ Route::prefix('admin')->group(function () {
     // route pour la connection
     Route::get('/logout', [AdminController::class, 'logout'])
         ->name('admin_logout');
+
+    // route pour la connection
+    Route::get('/ajouter_un_cours', [AdminController::class, 'course_add'])
+        ->name('admin_course_add')
+        ->middleware('auth');
+
+
+    // route pour la connection
+    Route::post('/ajouter_un_cours', [AdminController::class, 'course_add_form'])
+        ->name('admin_course_add_form')
+        ->middleware('auth');
         
 
 });

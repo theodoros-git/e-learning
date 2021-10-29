@@ -58,7 +58,7 @@
 	                                    	<div style="margin-bottom: 10px;"></div>
 
 	                                    	<button class="btn btn-info  "  
-	                            			type="submit">Valider</button>
+	                            			type="submit" name="{{ $category->designation }}" value="{{ $category->designation }}">Valider</button>
 
 	                           			</div>
 	      

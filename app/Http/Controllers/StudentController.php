@@ -7,6 +7,7 @@ use Hash;
 use Session;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
@@ -172,7 +173,9 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                return view('dashboard.students.courses');
+                $courses = Course::all();
+                $number = $courses->count();
+                return view('dashboard.students.courses', ['courses' => $courses, 'number' => $number]);
 
             }
             else {

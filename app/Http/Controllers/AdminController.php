@@ -8,6 +8,7 @@ use Hash;
 use Session;
 
 use App\Models\CategoryCourse;
+use App\Models\Course;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -144,7 +145,7 @@ class AdminController extends Controller
             if (Auth()->user()->is_admin == True) {
 
 
-            return view('dashboard.admin.category_add');
+                return view('dashboard.admin.category_add');
 
             }
 
@@ -266,5 +267,64 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+
+    public function course_add() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $categories = CategoryCourse::all();
+
+                return view('dashboard.admin.add_course', [
+                'categories' => $categories
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function course_add_form(Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'course_category' => 'required|max:255',
+                'course_name' => 'required|max:255',
+                ]);
+
+                $course = new Course;
+
+                $course->designation = $request->course_name;
+                $course->category_course_id = $request->course_category;
+                $course->created_by = Auth()->user()->username;
+
+                $course->save();
+
+                return redirect('/admin/dashboard')->withCourseaddsuccess('Cours créé avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
     }
 }

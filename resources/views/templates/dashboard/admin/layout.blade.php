@@ -20,6 +20,7 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    @yield('stylesheets')
 
 </head>
 
@@ -34,10 +35,30 @@
 
             <ul class="list-unstyled components">
                 <p style="font-weight: bold;">Tableau de bord - Admin</p>
-                <li class="">
-                    
-                    <a href="{{ route('students_courses') }}">Ajouter un Cours</a>
+
+                <li>
+                    <a href="#coursSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cours</a>
+                    <ul class="collapse list-unstyled" id="coursSubmenu">
+                        <li>
+                            <a href="{{ route('admin_category_add') }}">Tous les cours</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin_course_add') }}">Ajouter un Cours</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin_course_add') }}">Ajouter une situation d'apprentissage</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin_course_add') }}">Ajouter une séquence</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin_course_add') }}">Ajouter une activité</a>
+                        </li>
                         
+                    </ul>
                 </li>
 
 
