@@ -20,6 +20,12 @@
 			        {{ session()->get('categoryaddsuccess') }}
 			    </div>
 			@endif
+
+			@if(session()->has('categorymodifysuccess'))
+			    <div class="alert alert-success">
+			        {{ session()->get('categorymodifysuccess') }}
+			    </div>
+			@endif
 		</div>
 	</div>
 

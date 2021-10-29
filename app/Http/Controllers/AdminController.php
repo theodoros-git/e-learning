@@ -123,8 +123,7 @@ class AdminController extends Controller
 
             if (Auth()->user()->is_admin == True) {
 
-
-            return view('dashboard.admin.dashboard');
+                return view('dashboard.admin.dashboard');
 
             }
 
@@ -202,7 +201,9 @@ class AdminController extends Controller
                 $categories = CategoryCourse::all();
 
 
-                return view('dashboard.admin.category_modify');
+                return view('dashboard.admin.category_modify', [
+                'categories' => $categories
+                ]);
 
             }
 
@@ -213,6 +214,38 @@ class AdminController extends Controller
         }
 
         return redirect('/admin/login');
+    }
+
+
+    public function category_modify_form(int $id, Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'category_course' => 'required|max:255',
+                ]);
+
+                $category = CategoryCourse::find($id);
+
+                $category->designation = $request->category_course;
+
+                $category->save();
+
+                return redirect('/admin/dashboard')->withCategorymodifysuccess('Catégorie de cours modifiée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+
     }
 
 

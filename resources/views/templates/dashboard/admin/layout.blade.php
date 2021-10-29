@@ -60,7 +60,7 @@
                             <a href="{{ route('admin_category_add') }}">Ajouter une Catégorie de cours</a>
                         </li>
                         <li>
-                            <a href="{{ route('students_factures') }}">Modifier une Catégorie de cours</a>
+                            <a href="{{ route('admin_category_modify') }}">Modifier une Catégorie de cours</a>
                         </li>
                         
                     </ul>

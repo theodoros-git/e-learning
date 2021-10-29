@@ -203,6 +203,11 @@ Route::prefix('admin')->group(function () {
         ->middleware('auth');
 
     // route pour la connection
+    Route::post('/modifier_une_catégorie_de_cours/{id}', [AdminController::class, 'category_modify_form'])
+        ->name('admin_category_modify_form')
+        ->middleware('auth');
+
+    // route pour la connection
     Route::get('/logout', [AdminController::class, 'logout'])
         ->name('admin_logout');
         
