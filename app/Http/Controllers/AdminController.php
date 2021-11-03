@@ -9,6 +9,8 @@ use Session;
 
 use App\Models\CategoryCourse;
 use App\Models\Course;
+use App\Models\Sequence;
+use App\Models\Sa;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -327,4 +329,181 @@ class AdminController extends Controller
 
         return redirect('/admin/login');
     }
+
+
+
+    public function sa_add() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $courses = Course::all();
+
+                return view('dashboard.admin.add_sa', [
+                'courses' => $courses
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+
+    public function sa_add_form(Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'sa_course' => 'required|max:255',
+                'sa_name' => 'required|max:255',
+                ]);
+
+                $sa = new Sa;
+
+                $sa->designation = $request->sa_name;
+                $sa->course_id = $request->sa_course;
+                $sa->created_by = Auth()->user()->username;
+
+                $sa->save();
+
+                return redirect('/admin/dashboard')->withSaaddsuccess('Situation d\'apprentissage créée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+
+    public function all_courses() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $courses = Course::all();
+                $number = $courses->count();
+
+                return view('dashboard.admin.all_courses', [
+                'courses' => $courses,
+                'number' => $number
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+
+
+    public function seq_add() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $sas = Sa::all();
+
+                return view('dashboard.admin.add_seq', [
+                'sas' => $sas
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+
+    public function seq_add_form(Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'seq_sa' => 'required|max:255',
+                'seq_name' => 'required|max:255',
+                ]);
+
+                $seq = new Sequence;
+
+                $seq->designation = $request->seq_name;
+                $seq->sa_id = $request->seq_sa;
+                $seq->created_by = Auth()->user()->username;
+
+                $seq->save();
+
+                return redirect('/admin/dashboard')->withSeqaddsuccess('Séquence créée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function activity_add() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $sequences = Sequence::all();
+
+                return view('dashboard.admin.activity_add', [
+                'sequences' => $sequences
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
 }

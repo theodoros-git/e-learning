@@ -31,7 +31,7 @@ Route::get('/', [GeneralController::class, 'index'])
 
 
 // Route pour la page de contact 
-Route::get('/contact/', [GeneralController::class, 'contact'])
+Route::get('/contact', [GeneralController::class, 'contact'])
         ->name('contact');
 
 
@@ -57,6 +57,9 @@ Route::get('/connection', [GeneralController::class, 'signin'])
 
 
 
+
+
+
 // Groupe de route pour les professeurs
 Route::prefix('teachers')->group(function () {
 
@@ -70,6 +73,11 @@ Route::prefix('teachers')->group(function () {
         
 
 });
+
+
+
+
+
 
 
 
@@ -146,9 +154,24 @@ Route::prefix('students')->group(function () {
     Route::get('/change_my_password', [StudentController::class, 'students_change_password'])
         ->name('students_change_password')
         ->middleware('auth');
+
+
+    // route pour dashboard eleves
+    Route::get('/courses/{course}', [StudentController::class, 'course_view'])
+        ->name('students_course_view')
+        ->middleware('auth');
         
+    // route pour dashboard eleves
+    Route::get('/courses/sas/{id}', [StudentController::class, 'sequence_view'])
+        ->name('students_sequence_view')
+        ->middleware('auth');
 
 });
+
+
+
+
+
 
 
 
@@ -220,6 +243,40 @@ Route::prefix('admin')->group(function () {
     // route pour la connection
     Route::post('/ajouter_un_cours', [AdminController::class, 'course_add_form'])
         ->name('admin_course_add_form')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::get('/ajouter_une_situation_d_apprentissage', [AdminController::class, 'sa_add'])
+        ->name('admin_sa_add')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::post('/ajouter_une_situation_d_apprentissage', [AdminController::class, 'sa_add_form'])
+        ->name('admin_sa_add_form')
+        ->middleware('auth');
+
+
+    // route pour la connection
+    Route::get('/all_courses', [AdminController::class, 'all_courses'])
+        ->name('admin_all_courses')
+        ->middleware('auth');
+
+
+    // route pour la connection
+    Route::get('/ajouter_une_sequence', [AdminController::class, 'seq_add'])
+        ->name('admin_seq_add')
+        ->middleware('auth');
+
+
+    // route pour la connection
+    Route::post('/ajouter_une_sequence', [AdminController::class, 'seq_add_form'])
+        ->name('admin_seq_add_form')
+        ->middleware('auth');
+
+
+    // route pour la connection
+    Route::get('/ajouter_une_activite', [AdminController::class, 'activity_add'])
+        ->name('admin_activity_add')
         ->middleware('auth');
         
 

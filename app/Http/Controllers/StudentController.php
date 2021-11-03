@@ -8,6 +8,7 @@ use Session;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Course;
+use App\Models\Sa;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
@@ -286,6 +287,61 @@ class StudentController extends Controller
 
                 return view('dashboard.students.change_password');
             }
+            else {
+                return view('errors.unautorised');
+            }
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+    public function course_view(string $course) {
+
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_student == True) {
+
+                $course_f = Course::where('designation', $course)->first();
+
+                $course_id = $course_f->id;
+
+                $course_sas = Course::find($course_id)->sas;
+                $number = $course_sas->count();
+                
+                return view('dashboard.students.course_view', [
+                'course_sas' => $course_sas,
+                'number' => $number
+                ]);
+            }
+            
+            else {
+                return view('errors.unautorised');
+            }
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+
+    public function sequence_view(int $id) {
+
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_student == True) {
+
+                $sequences = Sa::find($id)->sequences;
+
+                
+                $number = $sequences->count();
+                
+                return view('dashboard.students.sequence_view', [
+                'sequences' => $sequences,
+                'number' => $number
+                ]);
+            }
+            
             else {
                 return view('errors.unautorised');
             }

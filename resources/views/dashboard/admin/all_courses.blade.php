@@ -1,8 +1,9 @@
-@extends('templates.dashboard.students.layout')
+
+@extends('templates.dashboard.admin.layout')
 
 
 @section('title')
-	Mes cours
+	All courses
 @stop
 
 
@@ -20,7 +21,7 @@
 		            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 		              style="height: 300px;">
 		                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-		                <a href="{{ route('students_course_view', [$course->designation]) }}">
+		                <a href="">
 		                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 		                </a>
 		            </div>
@@ -29,7 +30,7 @@
 		            <div class="card">
 		                <div class="row mb-3 card-body">
 		                  	<div class="col-6">
-			                    <a href="{{ route('students_course_view', [$course->designation]) }}" class="text-info">
+			                    <a href="" class="text-info">
 			                      <i class="fas fa-align-left"></i>
 			                      {{ $course->designation }}
 			                    </a>
@@ -68,7 +69,7 @@
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_course_view', [$course->designation]) }}">
+				                <a href="">
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 				                </a>
 				            </div>
@@ -77,7 +78,7 @@
 				            <div class="card">
 				                <div class="row mb-3 card-body">
 				                  	<div class="col-6">
-					                    <a href="{{ route('students_course_view', [$course->designation]) }}" class="text-info">
+					                    <a href="" class="text-info">
 					                      <i class="fas fa-align-left"></i>
 					                      {{ $course->designation }}
 					                    </a>
@@ -121,7 +122,7 @@
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_course_view', [$course->designation]) }}">
+				                <a href="">
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 				                </a>
 				            </div>
@@ -130,7 +131,7 @@
 				            <div class="card">
 				                <div class="row mb-3 card-body">
 				                  	<div class="col-6">
-					                    <a href="{{ route('students_course_view', [$course->designation]) }}" class="text-info">
+					                    <a href="" class="text-info">
 					                      <i class="fas fa-align-left"></i>
 					                      {{ $course->designation }}
 					                    </a>
@@ -171,7 +172,7 @@
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_course_view', [$course->designation]) }}">
+				                <a href="">
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 				                </a>
 				            </div>
@@ -180,7 +181,7 @@
 				            <div class="card">
 				                <div class="row mb-3 card-body">
 				                  	<div class="col-6">
-					                    <a href="{{ route('students_course_view', [$course->designation]) }}" class="text-info">
+					                    <a href="" class="text-info">
 					                      <i class="fas fa-align-left"></i>
 					                      {{ $course->designation }}
 					                    </a>

@@ -31,6 +31,19 @@
 			        {{ session()->get('courseaddsuccess') }}
 			    </div>
 			@endif
+
+			@if(session()->has('saaddsuccess'))
+			    <div class="alert alert-success">
+			        {{ session()->get('saaddsuccess') }}
+			    </div>
+			@endif
+
+
+			@if(session()->has('seqaddsuccess'))
+			    <div class="alert alert-success">
+			        {{ session()->get('seqaddsuccess') }}
+			    </div>
+			@endif
 			
 		</div>
 	</div>
