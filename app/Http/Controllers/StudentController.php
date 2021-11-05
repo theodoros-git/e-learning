@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Sa;
 use App\Models\Sequence;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\functions\dateDiff;
 
 class StudentController extends Controller
 {
@@ -148,6 +149,7 @@ class StudentController extends Controller
     }
 
 
+
     public function dashboard() {
 
         if (Auth::check()) {
@@ -160,8 +162,10 @@ class StudentController extends Controller
 
                 $student_abonnement_duration = abs($student->abonnement_date_start - $student->abonnement_date_end);
 
-                
-                $now   = time();
+                $date1 = $student->abonnement_date_end;
+                $date2 = $student->abonnement_date_start;
+
+                $now = dateDiff($date1, $date2);
 
                 return view('dashboard.students.dashboard', ['now' => $now, 
                 'student' => $student_abonnement_duration ]);
