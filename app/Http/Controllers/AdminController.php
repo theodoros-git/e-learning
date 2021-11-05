@@ -11,6 +11,8 @@ use App\Models\CategoryCourse;
 use App\Models\Course;
 use App\Models\Sequence;
 use App\Models\Sa;
+use App\Models\Activite;
+//use Illuminate\Support\Facades\Request;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -494,6 +496,54 @@ class AdminController extends Controller
                 return view('dashboard.admin.activity_add', [
                 'sequences' => $sequences
                 ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+
+    public function activity_add_form(Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'activity_name' => 'required|max:255',
+                'activity_seq' => 'required|max:255',
+                'file' => 'required|file|max:500000',
+                ]);
+
+                
+
+                $file = $request->file('file');
+                if ($file !== null) {
+                    $filename =time().'.'.$file->extension();
+                    $path = 'uploads';
+                    $request->file->move($path, $filename);
+
+                    $activity = new Activite;
+
+                    $activity->designation = $request->activity_name;
+                    $activity->sequence_id = $request->activity_seq;
+                    $activity->url = $filename;
+                    $activity->created_by = Auth()->user()->username;
+
+                    $activity->save();
+                }
+
+                
+
+                return redirect('/admin/dashboard')->withActivityaddsuccess('Activité créée avec succès.');
 
             }
 

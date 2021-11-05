@@ -44,6 +44,12 @@
 			        {{ session()->get('seqaddsuccess') }}
 			    </div>
 			@endif
+
+			@if(session()->has('activityaddsuccess'))
+			    <div class="alert alert-success">
+			        {{ session()->get('activityaddsuccess') }}
+			    </div>
+			@endif
 			
 		</div>
 	</div>

@@ -166,6 +166,11 @@ Route::prefix('students')->group(function () {
         ->name('students_sequence_view')
         ->middleware('auth');
 
+    // route pour dashboard eleves
+    Route::get('/courses/activities/{id}', [StudentController::class, 'activities_view'])
+        ->name('students_activies_view')
+        ->middleware('auth');
+
 });
 
 
@@ -278,6 +283,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/ajouter_une_activite', [AdminController::class, 'activity_add'])
         ->name('admin_activity_add')
         ->middleware('auth');
-        
+
+    
+    // route pour la connection
+    Route::post('/ajouter_une_activite', [AdminController::class, 'activity_add_form'])
+    ->name('admin_activity_add_form')
+    ->middleware('auth');
+
+    
 
 });

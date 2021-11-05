@@ -2,7 +2,7 @@
 
 
 @section('title')
-	Séquences
+	Les activités
 @stop
 
 
@@ -14,13 +14,13 @@
 
 			<div class="col-md-5"></div>
 
-			@foreach ($sequences as $sequence)
+			@foreach ($activites as $activite)
 				<div class="col-md-4">
 
 		            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 		              style="height: 300px;">
 		                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-		                <a href="{{ route('students_activies_view', [$sequence->id]) }}">
+		                <a href="">
 		                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 		                </a>
 		            </div>
@@ -31,7 +31,7 @@
 		                  	<div class="col-6">
 			                    <a href="" class="text-info">
 			                      <i class="fas fa-align-left"></i>
-			                      {{ $sequence->designation }}
+			                      {{ $activite->designation }}
 			                    </a>
 		                  	</div>
 		    
@@ -62,13 +62,13 @@
 
 				<div class="row">
 
-					@foreach ($sequences as $sequence)
+					@foreach ($activites as $activite)
 						<div class="col-md-5 mr-16">
 
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_activies_view', [$sequence->id]) }}">
+				                <a href="">
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 				                </a>
 				            </div>
@@ -79,7 +79,7 @@
 				                  	<div class="col-6">
 					                    <a href="" class="text-info">
 					                      <i class="fas fa-align-left"></i>
-					                      {{ $sequence->designation }}
+					                      {{ $activite->designation }}
 					                    </a>
 				                  	</div>
 				    
@@ -115,13 +115,13 @@
 
 				<div class="row">
 
-					@foreach ($sequences as $sequence)
+					@foreach ($activites as $activite)
 						<div class="col-md-5 mr-16 mb-4">
 
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_activies_view', [$sequence->id]) }}">
+				                <a href="">
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 				                </a>
 				            </div>
@@ -132,7 +132,7 @@
 				                  	<div class="col-6">
 					                    <a href="" class="text-info">
 					                      <i class="fas fa-align-left"></i>
-					                      {{ $sequence->designation }}
+					                      {{ $activite->designation }}
 					                    </a>
 				                  	</div>
 				    
@@ -165,13 +165,13 @@
 
 				<div class="row">
 
-					@foreach ($sequences as $sequence)
+					@foreach ($activites as $activite)
 						<div class="col-md-5 mr-16 mb-4">
 
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_activies_view', [$sequence->id]) }}">
+				                <a href="">
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
 				                </a>
 				            </div>
@@ -182,7 +182,7 @@
 				                  	<div class="col-6">
 					                    <a href="" class="text-info">
 					                      <i class="fas fa-align-left"></i>
-					                      {{ $sequence->designation }}
+					                      {{ $activite->designation }}
 					                    </a>
 				                  	</div>
 				    

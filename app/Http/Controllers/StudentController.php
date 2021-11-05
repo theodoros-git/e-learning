@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Student;
 use App\Models\Course;
 use App\Models\Sa;
+use App\Models\Sequence;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
@@ -338,6 +339,32 @@ class StudentController extends Controller
                 
                 return view('dashboard.students.sequence_view', [
                 'sequences' => $sequences,
+                'number' => $number
+                ]);
+            }
+            
+            else {
+                return view('errors.unautorised');
+            }
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+    public function activities_view(int $id) {
+
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_student == True) {
+
+                $activites = Sequence::find($id)->activites;
+
+                
+                $number = $activites->count();
+                
+                return view('dashboard.students.activity_view', [
+                'activites' => $activites,
                 'number' => $number
                 ]);
             }

@@ -41,8 +41,8 @@
                 <div class="card-body">
 
                     
-                    <form action="{{ route('admin_sa_add_form') }}" method="POST" 
-                    class="text-center border border-light " >
+                    <form action="{{ route('admin_activity_add_form') }}" method="POST" 
+                    class="text-center border border-light " enctype="multipart/form-data">
                         @csrf
                     
                         <div class="row mb-4">
@@ -94,13 +94,13 @@
 
                                 <div class="col" style="text-align: left;">
                                     
-                                    <label class="form-label" for="username">Uploader la vidéo correspondante</label>
+                                    <label class="form-label" for="file">Uploader la vidéo correspondante</label>
 
                                     <div style="margin-bottom: 10px;"></div>
 
-                                    <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" />
+                                    <input type="file" id="file" name="file" class="form-control @error('file') is-invalid @enderror" value="{{ old('file') }}" />
 
-                                    @error('username')
+                                    @error('file')
 
                                         <div class="alert alert-danger">{{ $message }}</div>
 
