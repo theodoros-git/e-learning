@@ -154,8 +154,17 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
+                $username = Auth()->user()->username;
 
-                return view('dashboard.students.dashboard');
+                $student = Student::where('username', $username)->first();
+
+                $student_abonnement_duration = abs($student->abonnement_date_start - $student->abonnement_date_end);
+
+                
+                $now   = time();
+
+                return view('dashboard.students.dashboard', ['now' => $now, 
+                'student' => $student_abonnement_duration ]);
 
             }
 
