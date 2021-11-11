@@ -155,7 +155,71 @@ class StudentController extends Controller
         }
     }
 
+    public function user_unauthorized() {
 
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_student == True) {
+
+                return view('errors.unautorised');
+           }
+
+            else {
+                return view('errors.unautorised');
+            }
+            
+        }
+
+        return redirect('/students/login');
+    }
+
+    public function logout(Request $request) {
+    
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+
+    public function transaction_abonnement() {
+
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_student == True) {
+
+                $public_key = $_ENV["KKIAPAY_PUBLIC_KEY"];
+                $private_key = $_ENV["KKIAPAY_PRIVATE_KEY"];
+                $secret = $_ENV["KKIAPAY_SECRET_KEY"];
+
+                $kkiapay = new \Kkiapay\Kkiapay($public_key,
+                                                $private_key, 
+                                                $secret, );                              
+                $transaction_id = $_GET['transaction_id'];
+                $transaction = $kkiapay->verifyTransaction($transaction_id);
+
+                if ($transaction->status == 'SUCCESS') {
+
+                    $student_username = Auth()->user()->username;
+                    $student = Student::where('username', $student_username)
+                                                ->first();
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = true;
+                    $student_s->save();
+                    redirect('students/dashboard')->withAbonnementsuccess('Abonnement activé avec succès.Merci pour votre confiance!!');
+
+                }
+           }
+            
+        }
+
+        return redirect('/students/login');
+
+    }
 
     public function dashboard() {
 
@@ -167,16 +231,22 @@ class StudentController extends Controller
 
                 $student = Student::where('username', $username)->first();
 
-                $student_abonnement_duration = abs($student->abonnement_date_start - $student->abonnement_date_end);
+                if ($student->abonnement_is_active == true) {
 
-                $date1 = $student->abonnement_date_end;
-                $date2 = $student->abonnement_date_start;
+                    $student_abonnement_duration = abs($student->abonnement_date_start - $student->abonnement_date_end);
 
-                $now = Functions::dateDiff($date1, $date2);
+                    $date1 = $student->abonnement_date_end;
+                    $date2 = $student->abonnement_date_start;
 
-                return view('dashboard.students.dashboard', ['now' => $now, 
-                'student' => $student_abonnement_duration ]);
+                    $now = Functions::dateDiff($date1, $date2);
 
+                    return view('dashboard.students.dashboard', ['now' => $now, 
+                    'student' => $student_abonnement_duration ]);
+                }
+
+                else {
+                    return view('errors.unautorised');
+                }
             }
 
             else {
@@ -195,7 +265,11 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                $courses = Course::all();
+                $student_username = Auth()->user()->username;
+                $student = Student::where('username', $student_username)
+                                            ->first();
+                $student_classe_id = $student->classe_id;
+                $courses = Classe::find($student_classe_id)->courses;
                 $number = $courses->count();
                 return view('dashboard.students.courses', ['courses' => $courses, 'number' => $number]);
 

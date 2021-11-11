@@ -311,12 +311,14 @@ class AdminController extends Controller
                 $request->validate([
                 'course_category' => 'required|max:255',
                 'course_name' => 'required|max:255',
+                'classe_course' => 'required|max:255',
                 ]);
 
                 $course = new Course;
 
                 $course->designation = $request->course_name;
                 $course->category_course_id = $request->course_category;
+                $course->classe_id = $request->classe_course;
                 $course->created_by = Auth()->user()->username;
 
                 $course->save();

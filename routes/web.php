@@ -85,6 +85,14 @@ Route::prefix('teachers')->group(function () {
 // Groupe de route pour les students
 Route::prefix('students')->group(function () {
 
+    Route::get('/unauthorized_user', [StudentController::class, 'user_unauthorized'])
+        ->name('unauthorized_students')
+        ->middleware('auth');
+
+    Route::get('/transaction_abonnement', [StudentController::class, 'transaction_abonnement'])
+        ->name('transaction_abonnement')
+        ->middleware('auth');
+
     // route pour l'inscription des élèves
     Route::get('/log_up', [StudentController::class, 'logup'])
         ->name('logup');
@@ -170,6 +178,10 @@ Route::prefix('students')->group(function () {
     Route::get('/courses/activities/{id}', [StudentController::class, 'activities_view'])
         ->name('students_activies_view')
         ->middleware('auth');
+
+    // route pour la connection
+    Route::get('/logout', [StudentController::class, 'logout'])
+        ->name('student_logout');
 
 });
 

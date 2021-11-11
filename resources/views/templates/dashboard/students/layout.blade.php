@@ -105,7 +105,7 @@
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="">Se déconnecter</a>
+                                <a class="nav-link" href="{{ route('student_logout') }}">Se déconnecter</a>
                             </li>
                         </ul>
                     </div>
@@ -142,6 +142,7 @@
             });
         });
     </script>
+    @yield('javascripts')
 </body>
 
 </html>
