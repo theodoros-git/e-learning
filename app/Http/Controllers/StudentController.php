@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Sa;
 use App\Models\Sequence;
 use App\Models\Classe;
+use App\Models\Transactionabonn;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Student\Functions;
 
@@ -170,7 +171,7 @@ class StudentController extends Controller
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
     public function logout(Request $request) {
@@ -209,15 +210,34 @@ class StudentController extends Controller
                     $student_id = $student->id;
                     $student_s = Student::find($student_id);
                     $student_s->abonnement_is_active = true;
+                    $student_s->abonnement_date_start = now()->toDateTimeString();
+                    $now = now()->toDateTimeString();
+                    $student_s->abonnement_date_end = date("Y-m-d", strtotime("+31 day", strtotime($now)));
                     $student_s->save();
+
+                    $new_transaction = new Transactionabonn;
+
+                    $new_transaction->fullname = Auth()->user()->username;
+                    $new_transaction->montant_paye = $transaction->amount;
+                    $new_transaction->moyen_de_paiement = $transaction->source;
+                    $new_transaction->transaction_id = $transaction->transactionId;
+                    $new_transaction->pays = $transaction->country;
+                    $new_transaction->student_id = $student_id;
+                    $new_transaction->save();
                     redirect('students/dashboard')->withAbonnementsuccess('Abonnement activé avec succès.Merci pour votre confiance!!');
 
                 }
-           }
+            }
+
+            else {
+
+                return redirect('/students/non_a_student');
+
+            }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
 
     }
 
@@ -231,31 +251,39 @@ class StudentController extends Controller
 
                 $student = Student::where('username', $username)->first();
 
-                if ($student->abonnement_is_active == true) {
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
 
-                    $student_abonnement_duration = abs($student->abonnement_date_start - $student->abonnement_date_end);
-
-                    $date1 = $student->abonnement_date_end;
-                    $date2 = $student->abonnement_date_start;
+                    $date1 = strtotime($student->abonnement_date_end);
+                    $date2 = strtotime(now()->toDateTimeString());
 
                     $now = Functions::dateDiff($date1, $date2);
 
-                    return view('dashboard.students.dashboard', ['now' => $now, 
-                    'student' => $student_abonnement_duration ]);
+                    $secondes = $now['day'] * 60 *60 *24;
+
+                    return view('dashboard.students.dashboard', ['secondes' => $secondes,
+                    'date' => $date2, 
+                    ]);
                 }
 
                 else {
-                    return view('errors.unautorised');
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
                 }
             }
 
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -265,22 +293,40 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                $student_username = Auth()->user()->username;
-                $student = Student::where('username', $student_username)
-                                            ->first();
-                $student_classe_id = $student->classe_id;
-                $courses = Classe::find($student_classe_id)->courses;
-                $number = $courses->count();
-                return view('dashboard.students.courses', ['courses' => $courses, 'number' => $number]);
+                $username = Auth()->user()->username;
+
+                $student = Student::where('username', $username)->first();
+
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
+
+                    $student_username = Auth()->user()->username;
+                    $student = Student::where('username', $student_username)
+                                                ->first();
+                    $student_classe_id = $student->classe_id;
+                    $courses = Classe::find($student_classe_id)->courses;
+                    $number = $courses->count();
+                    return view('dashboard.students.courses', ['courses' => $courses, 'number' => $number]);
+                }
+
+                else {
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
+                }
 
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -293,12 +339,14 @@ class StudentController extends Controller
                 return view('dashboard.students.tds');
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -308,16 +356,34 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                return view('dashboard.students.challenges');
+                $username = Auth()->user()->username;
+
+                $student = Student::where('username', $username)->first();
+
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
+
+                    return view('dashboard.students.challenges');
+                }
+
+                else {
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
+                }
 
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -330,11 +396,13 @@ class StudentController extends Controller
                 return view('dashboard.students.profil');
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -347,12 +415,14 @@ class StudentController extends Controller
                 return view('dashboard.students.factures');
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -365,12 +435,14 @@ class StudentController extends Controller
                 return view('dashboard.students.change_informations');
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -383,12 +455,14 @@ class StudentController extends Controller
                 return view('dashboard.students.change_password');
             }
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
     public function course_view(string $course) {
@@ -397,26 +471,44 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                $course_f = Course::where('designation', $course)->first();
+                $username = Auth()->user()->username;
 
-                $course_id = $course_f->id;
+                $student = Student::where('username', $username)->first();
 
-                $course_sas = Course::find($course_id)->sas;
-                $number = $course_sas->count();
-                
-                return view('dashboard.students.course_view', [
-                'course_sas' => $course_sas,
-                'number' => $number
-                ]);
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
+
+                    $course_f = Course::where('designation', $course)->first();
+
+                    $course_id = $course_f->id;
+
+                    $course_sas = Course::find($course_id)->sas;
+                    $number = $course_sas->count();
+                    
+                    return view('dashboard.students.course_view', [
+                    'course_sas' => $course_sas,
+                    'number' => $number
+                    ]);
+                }
+
+                else {
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
+                }
             }
             
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
 
@@ -426,24 +518,42 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                $sequences = Sa::find($id)->sequences;
+                $username = Auth()->user()->username;
 
-                
-                $number = $sequences->count();
-                
-                return view('dashboard.students.sequence_view', [
-                'sequences' => $sequences,
-                'number' => $number
-                ]);
+                $student = Student::where('username', $username)->first();
+
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
+
+                    $sequences = Sa::find($id)->sequences;
+
+                    
+                    $number = $sequences->count();
+                    
+                    return view('dashboard.students.sequence_view', [
+                    'sequences' => $sequences,
+                    'number' => $number
+                    ]);
+                }
+
+                else {
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
+                }
             }
             
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 
     public function activities_view(int $id) {
@@ -452,23 +562,41 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                $activites = Sequence::find($id)->activites;
+                $username = Auth()->user()->username;
 
-                
-                $number = $activites->count();
-                
-                return view('dashboard.students.activity_view', [
-                'activites' => $activites,
-                'number' => $number
-                ]);
+                $student = Student::where('username', $username)->first();
+
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
+
+                    $activites = Sequence::find($id)->activites;
+
+                    
+                    $number = $activites->count();
+                    
+                    return view('dashboard.students.activity_view', [
+                    'activites' => $activites,
+                    'number' => $number
+                    ]);
+                }
+
+                else {
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
+                }
             }
             
             else {
-                return view('errors.unautorised');
+
+                return redirect('/students/non_a_student');
+
             }
             
         }
 
-        return redirect('/students/login');
+        return redirect('/connection');
     }
 }

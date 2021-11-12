@@ -26,4 +26,5 @@ class Functions {
 
         return $retour;
     }
+
 }
