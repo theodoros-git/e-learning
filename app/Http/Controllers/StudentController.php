@@ -412,7 +412,11 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                return view('dashboard.students.factures');
+
+                $transactions = Transactionabonn::where('fullname', Auth()->user()->username)->get();
+                return view('dashboard.students.factures', [
+                    'transactions' => $transactions,
+                    ]);
             }
             else {
 
