@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Sa;
 use App\Models\Sequence;
 use App\Models\Classe;
+use App\Models\Activite;
 use App\Models\Transactionabonn;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Student\Functions;
@@ -393,7 +394,13 @@ class StudentController extends Controller
 
             if (Auth()->user()->is_student == True) {
 
-                return view('dashboard.students.profil');
+                $username = Auth()->user()->username;
+
+                $student = Student::where('username', $username)->first();
+
+                return view('dashboard.students.profil', [
+                    'student' => $student,
+                    ]);
             }
             else {
 
@@ -580,6 +587,46 @@ class StudentController extends Controller
                     return view('dashboard.students.activity_view', [
                     'activites' => $activites,
                     'number' => $number
+                    ]);
+                }
+
+                else {
+
+                    $student_id = $student->id;
+                    $student_s = Student::find($student_id);
+                    $student_s->abonnement_is_active = false;
+                    $student_s->save();
+                    return redirect('students/unauthorized_user');
+                }
+            }
+            
+            else {
+
+                return redirect('/students/non_a_student');
+
+            }
+            
+        }
+
+        return redirect('/connection');
+    }
+
+
+    public function activity_video(int $id) {
+
+        if (Auth::check()) {
+
+            if (Auth()->user()->is_student == True) {
+
+                $username = Auth()->user()->username;
+
+                $student = Student::where('username', $username)->first();
+
+                if ($student->abonnement_is_active == true and $student->abonnement_date_end != now()->toDateTimeString() ) {
+
+                    $activity = Activite::find($id);
+                    
+                    return view('dashboard.students.activity_video', [
                     ]);
                 }
 

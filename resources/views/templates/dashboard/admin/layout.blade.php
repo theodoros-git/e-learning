@@ -58,6 +58,10 @@
                         <li>
                             <a href="{{ route('admin_activity_add') }}">Ajouter une activité</a>
                         </li>
+
+                        <li>
+                            <a href="{{ route('admin_upload_files') }}">Uploader des fichiers pour une activité</a>
+                        </li>
                         
                     </ul>
                 </li>
@@ -66,14 +70,14 @@
                     <a href="#classeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Classes</a>
                     <ul class="collapse list-unstyled" id="classeSubmenu">
                         <li>
-                            <a href="{{ route('admin_all_courses') }}">Toutes les classes</a>
+                            <a href="{{ route('admin_all_classes') }}">Toutes les classes</a>
                         </li>
                         <li>
                             <a href="{{ route('admin_classe_add') }}">Ajouter une Classe</a>
                         </li>
 
                         <li>
-                            <a href="{{ route('admin_sa_add') }}">Modifier une classe</a>
+                            <a href="{{ route('admin_classe_modify') }}">Modifier une classe</a>
                         </li>
 
                         

@@ -13,6 +13,8 @@ use App\Models\Sequence;
 use App\Models\Sa;
 use App\Models\Activite;
 use App\Models\Classe;
+use App\Models\File;
+use App\Models\ActiviteFile;
 //use Illuminate\Support\Facades\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -162,6 +164,8 @@ class AdminController extends Controller
 
         return redirect('/admin/login');
     }
+
+
 
 
     public function category_add_form(Request $request) {
@@ -525,6 +529,7 @@ class AdminController extends Controller
                 'activity_name' => 'required|max:255',
                 'activity_seq' => 'required|max:255',
                 'file' => 'required|file|max:500000',
+
                 ]);
 
                 
@@ -544,8 +549,6 @@ class AdminController extends Controller
 
                     $activity->save();
                 }
-
-                
 
                 return redirect('/admin/dashboard')->withActivityaddsuccess('Activité créée avec succès.');
 
@@ -603,6 +606,191 @@ class AdminController extends Controller
                 $classe->save();
 
                 return redirect('/admin/dashboard')->withClasseaddsuccess('Classe créée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function classe_modify() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $classes = Classe::all();
+
+
+                return view('dashboard.admin.classe_modify', [
+                'classes' => $classes
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function classe_modify_form(int $id, Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'class' => 'required|max:255',
+                ]);
+
+                $classe = Classe::find($id);
+
+                $classe->designation = $request->class;
+
+                $classe->save();
+
+                return redirect('/admin/dashboard')->withClassemodifysuccess('Classe  modifiée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+
+    }
+
+
+    public function all_classes() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $classes = Classe::all();
+
+                $number = $classes->count();
+                return view('dashboard.admin.all_classes', [
+                'classes' => $classes,
+                'number' => $number,
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+    }
+
+
+    public function classe_delete(int $id, Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+
+                $classe = Classe::find($id);
+
+                $classe->delete();
+
+                return redirect('/admin/all_classes')->withClassemodifysuccess('Classe  modifiée avec succès.');
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+
+    }
+
+
+    public function upload_files() {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+
+                $activites = Activite::all();
+
+                return view('dashboard.admin.upload_files', [
+                'activities' => $activites,
+                ]);
+
+            }
+
+            else {
+                return view('errors.unautorised');
+            }
+
+        }
+
+        return redirect('/admin/login');
+
+    }
+
+
+    public function upload_files_form(Request $request) {
+
+        if (Auth::check()) {
+
+
+            if (Auth()->user()->is_admin == True) {
+
+                $request->validate([
+                'activity' => 'required|max:255',
+                'files' => 'required|max:500000',
+
+                ]);
+
+                $activity = Activite::find($request->activity);
+
+                foreach($request->file('files') as $file1) {
+                    $filename1 =rand(1, 1000000).'.'.$file1->extension();
+                    $path1 = 'uploads/activity_files';
+                    $file1->move($path1, $filename1);
+
+                    $file_a = new File;
+                    $file_a->url = $filename1;
+                    $file_a->save();
+                    
+                    $file_u = new ActiviteFile;
+                    $file_u->activite_id = $activity->id;
+                    $file_u->file_id = $file_a->id;
+                    $file_u->save();
+                } 
+
+                
+
+                return redirect('/admin/dashboard')->withActivityaddsuccess('Activité créée avec succès.');
 
             }
 

@@ -3,7 +3,7 @@
 
 
 @section('title')
-	Add Learning Situation
+	Add activity
 @stop
 
 @section('stylesheets')
@@ -109,6 +109,8 @@
                                 </div>
   
                         </div>
+
+                        
 
                         
 

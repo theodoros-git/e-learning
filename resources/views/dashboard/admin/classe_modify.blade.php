@@ -3,7 +3,7 @@
 
 
 @section('title')
-	Modify category course
+	Modify classe
 @stop
 
 @section('content')
@@ -18,13 +18,13 @@
             <div class="card ">
 
                 <div class="card-header text-center" style="font-weight: bolder; font-size: 20px; color: #1a2649;">
-                Modifier une catégorie - LearningApp</div>
+                Modifier une classe - LearningApp</div>
 
                 <div class="card-body">
 
-                    @foreach ($categories as $category)
+                    @foreach ($classes as $category)
 					 
-	                    <form action="{{ route('admin_category_modify_form', [$category->id]) }}" method="POST" 
+	                    <form action="{{ route('admin_classe_modify_form', [$category->id]) }}" method="POST" 
 	                    class="text-center border border-light " >
 	                        @csrf
 	                    
@@ -34,7 +34,7 @@
 	             
 	                                        <div style="margin-bottom: 10px;"></div>
 
-	                                        <input type="text" id="category_course" name="category_course" class="form-control" value="{{ $category->designation }}" disabled="disabled" />
+	                                        <input type="text" id="classe" name="classe" class="form-control" value="{{ $category->designation }}" disabled="disabled" />
 	                                    </div>
 
 	                                    <div class="col-6" >
@@ -43,9 +43,9 @@
 
 	                                        <div style="margin-bottom: 10px;"></div>
 
-	                                        <input type="text" id="category_course" name="category_course" class="form-control @error('category_course') is-invalid @enderror" value="{{ old('category_course') }}" />
+	                                        <input type="text" id="class" name="class" class="form-control @error('class') is-invalid @enderror" value="{{ old('class') }}" />
 
-	                                        @error('category_course')
+	                                        @error('class')
 
 	                                            <div class="alert alert-danger">{{ $message }}</div>
 
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="card-footer text-muted text-center">
-                    <p style="color: #1a2649;">Admin - Catégorie - Modifier une catégorie</p>
+                    <p style="color: #1a2649;">Admin - Classes - Modifier une classe</p>
                     
                
                 </div>

@@ -1,8 +1,8 @@
-@extends('templates.dashboard.students.layout')
+@extends('templates.dashboard.admin.layout')
 
 
 @section('title')
-	Les activités
+	All classes
 @stop
 
 
@@ -14,29 +14,31 @@
 
 			<div class="col-md-5"></div>
 
-			@foreach ($activites as $activite)
+			@foreach ($classes as $course)
 				<div class="col-md-4">
 
 		            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 		              style="height: 300px;">
 		                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-		                <a href="{{ route('students_activity_video', [$activite->id]) }}">
 		                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-		                </a>
+		                
 		            </div>
 		  
 		              <!-- Article data -->
 		            <div class="card">
 		                <div class="row mb-3 card-body">
-		                  	<div class="col-6">
-			                    <a href="{{ route('students_activity_video', [$activite->id]) }}" class="text-info">
+		                  	<div class="col-6 text-info">
+			                    
 			                      <i class="fas fa-align-left"></i>
-			                      {{ $activite->designation }}
-			                    </a>
+			                      {{ $course->designation }}
+			                    
 		                  	</div>
 		    
 		                  	<div class="col-6 text-end">
-		                    	<u> </u>
+		                    	<form action="{{ route('admin_classe_delete', [$course->id]) }}" method="POST">
+				                  			@csrf
+				                    		<button type="submit" class="btn btn-danger">Supprimer</button>
+				                    	</form>
 		                  	</div>
 		                
 		                  	<h5 style="color: #229ddc; font-size: 20px;"></h5>
@@ -62,29 +64,32 @@
 
 				<div class="row">
 
-					@foreach ($activites as $activite)
+					@foreach ($classes as $course)
 						<div class="col-md-5 mr-16">
 
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_activity_video', [$activite->id]) }}">
+				                
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-				                </a>
+				                
 				            </div>
 				  
 				              <!-- Article data -->
 				            <div class="card">
 				                <div class="row mb-3 card-body">
-				                  	<div class="col-6">
-					                    <a href="{{ route('students_activity_video', [$activite->id]) }}" class="text-info">
+				                  	<div class="col-6 text-info">
+					                    
 					                      <i class="fas fa-align-left"></i>
-					                      {{ $activite->designation }}
-					                    </a>
+					                      {{ $course->designation }}
+					                    
 				                  	</div>
 				    
 				                  	<div class="col-6 text-end">
-				                    	<u> </u>
+				                  		<form action="{{ route('admin_classe_delete', [$course->id]) }}" method="POST">
+				                  			@csrf
+				                    		<button type="submit" class="btn btn-danger">Supprimer</button>
+				                    	</form>
 				                  	</div>
 				                
 				                  	<h5 style="color: #229ddc; font-size: 20px;"></h5>
@@ -115,29 +120,32 @@
 
 				<div class="row">
 
-					@foreach ($activites as $activite)
+					@foreach ($classes as $course)
 						<div class="col-md-5 mr-16 mb-4">
 
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_activity_video', [$activite->id]) }}">
+				                
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-				                </a>
+				                
 				            </div>
 				  
 				              <!-- Article data -->
 				            <div class="card">
 				                <div class="row mb-3 card-body">
-				                  	<div class="col-6">
-					                    <a href="{{ route('students_activity_video', [$activite->id]) }}" class="text-info">
+				                  	<div class="col-6 text-info">
+					                    
 					                      <i class="fas fa-align-left"></i>
-					                      {{ $activite->designation }}
-					                    </a>
+					                      {{ $course->designation }}
+					                    
 				                  	</div>
 				    
 				                  	<div class="col-6 text-end">
-				                    	<u> </u>
+				                    	<form action="{{ route('admin_classe_delete', [$course->id]) }}" method="POST">
+				                  			@csrf
+				                    		<button type="submit" class="btn btn-danger">Supprimer</button>
+				                    	</form>
 				                  	</div>
 				                
 				                  	<h5 style="color: #229ddc; font-size: 20px;"></h5>
@@ -165,29 +173,32 @@
 
 				<div class="row">
 
-					@foreach ($activites as $activite)
+					@foreach ($classes as $course)
 						<div class="col-md-5 mr-16 mb-4">
 
 				            <div class=" bg-image hover-overlay shadow-1-strong rounded-5 ripple mb-4" data-mdb-ripple-color="light"
 				              style="height: 300px;">
 				                <img src="https://mdbootstrap.com/img/new/slides/041.jpg" class="img-fluid" />
-				                <a href="{{ route('students_activity_video', [$activite->id]) }}">
+				                
 				                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-				                </a>
+				                
 				            </div>
 				  
 				              <!-- Article data -->
 				            <div class="card">
 				                <div class="row mb-3 card-body">
-				                  	<div class="col-6">
-					                    <a href="{{ route('students_activity_video', [$activite->id]) }}" class="text-info">
+				                  	<div class="col-6 text-info">
+					                    
 					                      <i class="fas fa-align-left"></i>
-					                      {{ $activite->designation }}
-					                    </a>
+					                      {{ $course->designation }}
+					                    
 				                  	</div>
 				    
 				                  	<div class="col-6 text-end">
-				                    	<u> </u>
+				                    	<form action="{{ route('admin_classe_delete', [$course->id]) }}" method="POST">
+				                  			@csrf
+				                    		<button type="submit" class="btn btn-danger">Supprimer</button>
+				                    	</form>
 				                  	</div>
 				                
 				                  	<h5 style="color: #229ddc; font-size: 20px;"></h5>

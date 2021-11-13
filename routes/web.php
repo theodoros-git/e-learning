@@ -183,6 +183,11 @@ Route::prefix('students')->group(function () {
     Route::get('/logout', [StudentController::class, 'logout'])
         ->name('student_logout');
 
+    // route pour dashboard eleves
+    Route::get('/courses/activities/{id}/view', [StudentController::class, 'activity_video'])
+        ->name('students_activity_video')
+        ->middleware('auth');
+
 });
 
 
@@ -313,5 +318,33 @@ Route::prefix('admin')->group(function () {
     ->name('admin_classe_add_form')
     ->middleware('auth');
     
+
+    // route pour la connection
+    Route::get('/modifier_une_classe', [AdminController::class, 'classe_modify'])
+        ->name('admin_classe_modify')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::post('/modifier_une_classe/{id}', [AdminController::class, 'classe_modify_form'])
+        ->name('admin_classe_modify_form')
+        ->middleware('auth');
+
+    // route pour la connection
+    Route::get('/all_classes', [AdminController::class, 'all_classes'])
+        ->name('admin_all_classes')
+        ->middleware('auth');
+
+
+    Route::post('/supprimer_une_classe/{id}', [AdminController::class, 'classe_delete'])
+    ->name('admin_classe_delete')
+    ->middleware('auth');
+
+    Route::get('/uploader_des_fichiers', [AdminController::class, 'upload_files'])
+    ->name('admin_upload_files')
+    ->middleware('auth');
+
+    Route::post('/uploader_des_fichiers', [AdminController::class, 'upload_files_form'])
+    ->name('admin_upload_files_form')
+    ->middleware('auth');
 
 });
